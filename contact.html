@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Heritage Hill Aussies</title>
+    <meta name="description" content="Get in touch with Heritage Hill Aussies. Inquire about available Australian Shepherd puppies, ask questions, or check availability. We respond within 24 hours.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__logo">
+          <img src="images/Parents and past litters/Logo image.svg" alt="Heritage Hill Aussies" class="nav__logo-img">
+        </a>
+        <button class="nav__toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        <div class="nav__links">
+          <a href="index.html" class="nav__link">Home</a>
+          <a href="about.html" class="nav__link">About Us</a>
+          <a href="puppies.html" class="nav__link">Available Puppies</a>
+          <a href="contact.html" class="nav__link nav__link--active">Contact</a>
+          <a href="contact.html" class="nav__cta">Inquire Now</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+
+        <!-- Page Hero -->
+        <section class="page-hero">
+          <div class="page-hero__content">
+            <span class="section-label">Contact</span>
+            <h1>Get in Touch</h1>
+            <p>We'd love to hear from you &mdash; whether you're ready to adopt or simply have questions</p>
+          </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section">
+            <div class="container">
+                <div class="contact-grid">
+
+                    <!-- Left Column: Contact Form -->
+                    <div class="contact-form-wrapper">
+                        <p class="contact-form__intro">Fill out the form below and we'll get back to you within 24 hours. Whether you're inquiring about a specific puppy, checking availability, or have questions about our process, we're here to help.</p>
+
+                        <form action="#" method="POST" class="contact-form" id="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="first-name" class="form-group__label">First Name <span class="required">*</span></label>
+                                    <input type="text" id="first-name" name="first_name" class="form-group__input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="last-name" class="form-group__label">Last Name <span class="required">*</span></label>
+                                    <input type="text" id="last-name" name="last_name" class="form-group__input" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email" class="form-group__label">Email Address <span class="required">*</span></label>
+                                    <input type="email" id="email" name="email" class="form-group__input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone" class="form-group__label">Phone Number <span class="required">*</span></label>
+                                    <input type="tel" id="phone" name="phone" class="form-group__input" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject" class="form-group__label">Subject <span class="required">*</span></label>
+                                <select id="subject" name="subject" class="form-group__input form-group__select" required>
+                                    <option value="" disabled selected>Please select a subject</option>
+                                    <option value="puppy-availability">Puppy Availability Inquiry</option>
+                                    <option value="payment-plans">Payment Plan Information</option>
+                                    <option value="general-question">General Question</option>
+                                    <option value="deposit-info">Deposit Information</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <!-- Custom Puppy Selector -->
+                            <div class="form-group">
+                              <label class="form-group__label">Which Puppy Are You Interested In?</label>
+                              <input type="hidden" name="puppy_interest" id="puppy-interest-input">
+                              <div class="puppy-select-wrapper" id="puppy-selector">
+                                <div class="puppy-select-trigger" id="puppy-select-trigger">
+                                  <span class="puppy-select-trigger__placeholder">Select a puppy (optional)</span>
+                                  <span class="puppy-select-trigger__arrow">&#9662;</span>
+                                </div>
+                                <div class="puppy-select-dropdown" id="puppy-select-dropdown">
+                                  <div class="puppy-select-option" data-value="Agi" data-img="images/Agi Female 9 weeks 1000/IMG_20260207_233711_003.jpg">
+                                    <img src="images/Agi Female 9 weeks 1000/IMG_20260207_233711_003.jpg" alt="Agi" class="puppy-select-option__img">
+                                    <div class="puppy-select-option__info">
+                                      <div class="puppy-select-option__name">Agi</div>
+                                      <div class="puppy-select-option__meta">Female &bull; 9 Weeks &bull; $1,000</div>
+                                    </div>
+                                  </div>
+                                  <div class="puppy-select-option" data-value="Annie" data-img="images/Annie Female 9 weeks 1200/IMG_20260207_233155_250.jpg">
+                                    <img src="images/Annie Female 9 weeks 1200/IMG_20260207_233155_250.jpg" alt="Annie" class="puppy-select-option__img">
+                                    <div class="puppy-select-option__info">
+                                      <div class="puppy-select-option__name">Annie</div>
+                                      <div class="puppy-select-option__meta">Female &bull; 9 Weeks &bull; $1,200</div>
+                                    </div>
+                                  </div>
+                                  <div class="puppy-select-option" data-value="Jake" data-img="images/Jake male 9 weeks 800/IMG_20260207_233624_302.jpg">
+                                    <img src="images/Jake male 9 weeks 800/IMG_20260207_233624_302.jpg" alt="Jake" class="puppy-select-option__img">
+                                    <div class="puppy-select-option__info">
+                                      <div class="puppy-select-option__name">Jake</div>
+                                      <div class="puppy-select-option__meta">Male &bull; 9 Weeks &bull; $800</div>
+                                    </div>
+                                  </div>
+                                  <div class="puppy-select-option" data-value="Jayden" data-img="images/Jayden male 9 weeks 1500/IMG_20260207_232841_481.jpg">
+                                    <img src="images/Jayden male 9 weeks 1500/IMG_20260207_232841_481.jpg" alt="Jayden" class="puppy-select-option__img">
+                                    <div class="puppy-select-option__info">
+                                      <div class="puppy-select-option__name">Jayden</div>
+                                      <div class="puppy-select-option__meta">Male &bull; 9 Weeks &bull; $1,500</div>
+                                    </div>
+                                  </div>
+                                  <div class="puppy-select-option" data-value="Kate" data-img="images/Kate Female 9 weeks 1000/IMG_20260207_232929_571.jpg">
+                                    <img src="images/Kate Female 9 weeks 1000/IMG_20260207_232929_571.jpg" alt="Kate" class="puppy-select-option__img">
+                                    <div class="puppy-select-option__info">
+                                      <div class="puppy-select-option__name">Kate</div>
+                                      <div class="puppy-select-option__meta">Female &bull; 9 Weeks &bull; $1,000</div>
+                                    </div>
+                                  </div>
+                                  <div class="puppy-select-option" data-value="Morlich" data-img="images/Morlich Male 9 weeks 1000/IMG_20260207_233042_732.jpg">
+                                    <img src="images/Morlich Male 9 weeks 1000/IMG_20260207_233042_732.jpg" alt="Morlich" class="puppy-select-option__img">
+                                    <div class="puppy-select-option__info">
+                                      <div class="puppy-select-option__name">Morlich</div>
+                                      <div class="puppy-select-option__meta">Male &bull; 9 Weeks &bull; $1,000</div>
+                                    </div>
+                                  </div>
+                                  <div class="puppy-select-option" data-value="Murphy" data-img="images/Murphy Female 9 weeks 800/IMG_20260207_233321_044.jpg">
+                                    <img src="images/Murphy Female 9 weeks 800/IMG_20260207_233321_044.jpg" alt="Murphy" class="puppy-select-option__img">
+                                    <div class="puppy-select-option__info">
+                                      <div class="puppy-select-option__name">Murphy</div>
+                                      <div class="puppy-select-option__meta">Female &bull; 9 Weeks &bull; $800</div>
+                                    </div>
+                                  </div>
+                                  <div class="puppy-select-option" data-value="Terry" data-img="images/Terry Mala 9 weeks 1500/IMG_20260207_232625_098.jpg">
+                                    <img src="images/Terry Mala 9 weeks 1500/IMG_20260207_232625_098.jpg" alt="Terry" class="puppy-select-option__img">
+                                    <div class="puppy-select-option__info">
+                                      <div class="puppy-select-option__name">Terry</div>
+                                      <div class="puppy-select-option__meta">Male &bull; 9 Weeks &bull; $1,500</div>
+                                    </div>
+                                  </div>
+                                  <div class="puppy-select-option" data-value="Tracy" data-img="images/Tracy Female 9 weeks 1700/IMG_20260207_233753_958.jpg">
+                                    <img src="images/Tracy Female 9 weeks 1700/IMG_20260207_233753_958.jpg" alt="Tracy" class="puppy-select-option__img">
+                                    <div class="puppy-select-option__info">
+                                      <div class="puppy-select-option__name">Tracy</div>
+                                      <div class="puppy-select-option__meta">Female &bull; 9 Weeks &bull; $1,700</div>
+                                    </div>
+                                  </div>
+                                  <div class="puppy-select-option" data-value="General Inquiry">
+                                    <div class="puppy-select-option__info">
+                                      <div class="puppy-select-option__name">Not sure yet / General Inquiry</div>
+                                      <div class="puppy-select-option__meta">I'd like to learn more about available puppies</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message" class="form-group__label">Message</label>
+                                <textarea id="message" name="message" class="form-group__input form-group__textarea" rows="6" placeholder="Tell us about yourself, your family, and what you're looking for in an Australian Shepherd..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn--primary btn--lg btn--block contact-form__submit">Send Your Inquiry</button>
+
+                            <p class="contact-form__note">We typically respond within 24 hours.</p>
+                        </form>
+                    </div>
+
+                    <!-- Right Column: Contact Information -->
+                    <div class="contact-sidebar">
+                        <div class="contact-card">
+                            <h3 class="contact-card__title">Contact Information</h3>
+                            <ul class="contact-card__list">
+                                <li class="contact-card__item">
+                                    <span class="contact-card__label">Email</span>
+                                    aussiepuppies06@gmail.com
+                                </li>
+                                <li class="contact-card__item">
+                                    <span class="contact-card__label">Phone</span>
+                                    +1 (240) 979-6991
+                                </li>
+                                <li class="contact-card__item">
+                                    <span class="contact-card__label">Location</span>
+                                    United States
+                                </li>
+                                <li class="contact-card__item">
+                                    <span class="contact-card__label">Hours</span>
+                                    Monday - Saturday: 9am - 6pm EST
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="contact-card">
+                            <h3 class="contact-card__title">What to Expect</h3>
+                            <ul class="contact-card__expect-list">
+                                <li>Response within 24 hours</li>
+                                <li>Personalized puppy matching</li>
+                                <li>Transparent pricing discussion</li>
+                                <li>No pressure - we want the best fit for everyone</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section section--cream">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Common Questions</h2>
+                </div>
+                <div class="faq-grid">
+                    <div class="faq-card">
+                        <h4>How do I reserve a puppy?</h4>
+                        <p>We require a non-refundable deposit to reserve your puppy. The remaining balance is due before pickup. Contact us for current pricing and availability.</p>
+                    </div>
+                    <div class="faq-card">
+                        <h4>Do you offer payment plans?</h4>
+                        <p>Yes, we understand that welcoming a new family member is a significant investment. Contact us to discuss flexible payment options.</p>
+                    </div>
+                    <div class="faq-card">
+                        <h4>What health guarantees do you offer?</h4>
+                        <p>Every puppy comes with a comprehensive health guarantee, complete vaccination records, and AKC registration. We stand behind the health of our puppies.</p>
+                    </div>
+                    <div class="faq-card">
+                        <h4>How do I know my puppy is healthy?</h4>
+                        <p>Every puppy comes with a complete veterinary health certificate, up-to-date vaccination records, and a written health guarantee. We provide full transparency with all medical documentation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section section--dark">
+            <div class="container">
+                <div class="cta-block fade-in">
+                    <h2>Prefer to Browse First?</h2>
+                    <p>Take a look at our currently available Australian Shepherd puppies. Each listing includes photos, personality details, and pricing information so you can find the perfect match for your family.</p>
+                    <div class="cta-block__actions">
+                        <a href="puppies.html" class="btn btn--primary btn--lg">View Available Puppies</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__brand">
+            <a href="index.html" class="nav__logo">
+              <img src="images/Parents and past litters/Logo image.svg" alt="Heritage Hill Aussies" class="nav__logo-img">
+            </a>
+            <p>A family-owned breeder dedicated to raising healthy, well-socialized Australian Shepherds with champion bloodlines. Every puppy is raised in our home with love and care.</p>
+          </div>
+          <div>
+            <h4>Quick Links</h4>
+            <ul class="footer__links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="puppies.html">Available Puppies</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Information</h4>
+            <ul class="footer__links">
+              <li><a href="terms.html">Terms of Service</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Contact Us</h4>
+            <ul class="footer__links">
+              <li>Email: aussiepuppies06@gmail.com</li>
+              <li>Phone: +1 (240) 979-6991</li>
+              <li>Location: United States</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p>&copy; 2026 Heritage Hill Aussies. All rights reserved.</p>
+          <p><a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a></p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
