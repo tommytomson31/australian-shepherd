@@ -167,6 +167,58 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // --- Contact form: send via mailto (no backend required) ---
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const to = 'aussiepuppies06@gmail.com';
+      const first = (document.getElementById('first-name') && document.getElementById('first-name').value) || '';
+      const last = (document.getElementById('last-name') && document.getElementById('last-name').value) || '';
+      const email = (document.getElementById('email') && document.getElementById('email').value) || '';
+      const phone = (document.getElementById('phone') && document.getElementById('phone').value) || '';
+      const subjectSelect = document.getElementById('subject');
+      const subjectLabel = subjectSelect && subjectSelect.options[subjectSelect.selectedIndex] ? subjectSelect.options[subjectSelect.selectedIndex].text : '';
+      const puppyInterest = (document.getElementById('puppy-interest-input') && document.getElementById('puppy-interest-input').value) || 'Not specified';
+      const message = (document.getElementById('message') && document.getElementById('message').value) || '';
+
+      const subject = `Heritage Hill Aussies Inquiry: ${subjectLabel}`.replace(/\s+/g, ' ').trim();
+      const body = [
+        '--- Heritage Hill Aussies - Contact Form ---',
+        '',
+        `Name: ${first} ${last}`,
+        `Email: ${email}`,
+        `Phone: ${phone}`,
+        `Subject: ${subjectLabel}`,
+        `Puppy interest: ${puppyInterest}`,
+        '',
+        'Message:',
+        message
+      ].join('\n');
+
+      const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailto;
+
+      // Show thank-you message
+      const submitBtn = contactForm.querySelector('.contact-form__submit');
+      const note = contactForm.querySelector('.contact-form__note');
+      if (submitBtn) {
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Opening your email...';
+        submitBtn.disabled = true;
+        setTimeout(() => {
+          submitBtn.textContent = 'Inquiry sent! Check your email client.';
+          if (note) note.textContent = 'Your default email app should open with this inquiry. Send the email to complete your message.';
+          setTimeout(() => {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+            if (note) note.textContent = 'We typically respond within 24 hours.';
+          }, 5000);
+        }, 800);
+      }
+    });
+  }
+
   // --- Puppy Card Image Gallery (click to cycle) ---
   document.querySelectorAll('.puppy-gallery').forEach(gallery => {
     const images = gallery.querySelectorAll('.puppy-card__image');

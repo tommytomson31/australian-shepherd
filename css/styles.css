@@ -677,19 +677,22 @@ p { margin-bottom: 1rem; font-size: 1.05rem; }
   border: 1px solid var(--color-border);
 }
 .badge--available {
-  background: rgba(74, 124, 89, 0.12);
-  color: var(--color-success);
-  border-color: rgba(74, 124, 89, 0.25);
+  background: #1a4d2e;
+  color: #fff;
+  border-color: #1a4d2e;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.2);
 }
 .badge--reserved {
-  background: rgba(196, 136, 47, 0.12);
-  color: var(--color-reserved);
-  border-color: rgba(196, 136, 47, 0.25);
+  background: #6b4e0f;
+  color: #fff;
+  border-color: #6b4e0f;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.2);
 }
 .badge--sold {
-  background: rgba(155, 77, 77, 0.12);
-  color: var(--color-sold);
-  border-color: rgba(155, 77, 77, 0.25);
+  background: #7a2525;
+  color: #fff;
+  border-color: #7a2525;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.2);
 }
 
 /* --- Puppy Cards --- */
@@ -727,6 +730,9 @@ p { margin-bottom: 1rem; font-size: 1.05rem; }
   top: var(--space-sm);
   left: var(--space-sm);
   z-index: 2;
+  font-size: 0.75rem;
+  padding: 0.4rem 0.95rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
 }
 
 /* Sold / Reserved overlay */
