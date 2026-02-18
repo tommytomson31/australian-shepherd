@@ -148,12 +148,12 @@ p { margin-bottom: 1rem; font-size: 1.05rem; }
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
-  /* Over-hero: transparent so hero shows through; dark gradient for 7:1 text contrast */
-  background: linear-gradient(180deg, rgba(26, 42, 27, 0.78) 0%, rgba(26, 42, 27, 0.42) 85%, rgba(26, 42, 27, 0.15) 100%);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  transition: background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  /* Over-hero: light overlay so hero shows through clearly; enough contrast for 7:1 */
+  background: linear-gradient(180deg, rgba(26, 42, 27, 0.52) 0%, rgba(26, 42, 27, 0.28) 70%, rgba(26, 42, 27, 0.06) 100%);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  transition: background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease;
 }
 .nav--scrolled {
   background: rgba(255, 253, 249, 0.92);
@@ -168,11 +168,11 @@ p { margin-bottom: 1rem; font-size: 1.05rem; }
 .nav--scrolled .nav__link.nav__link--active { color: var(--color-primary-dark); }
 .nav--scrolled .nav__link::after { background: var(--color-accent); }
 .nav--scrolled .nav__cta {
-  color: var(--color-warm-white);
-  background: var(--color-primary);
+  color: var(--color-warm-white) !important;
+  background: var(--color-primary) !important;
   border: 2px solid var(--color-primary);
 }
-.nav--scrolled .nav__cta:hover { background: var(--color-primary-light); }
+.nav--scrolled .nav__cta:hover { background: var(--color-primary-light) !important; }
 .nav--scrolled .nav__toggle span { background: var(--color-primary-dark); }
 
 .nav__inner {
@@ -239,10 +239,10 @@ p { margin-bottom: 1rem; font-size: 1.05rem; }
 .nav__cta {
   font-size: 0.82rem;
   font-weight: 600;
-  /* Over-hero: white text + border for 7:1 on dark bar */
+  /* Over-hero: outline only so hero shows through; 7:1 white on dark enough area */
   color: #fff;
-  background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.9);
+  background: transparent !important;
+  border: 2px solid rgba(255, 255, 255, 0.95);
   padding: 0.6rem 1.4rem;
   border-radius: var(--radius-sm);
   letter-spacing: 0.06em;
@@ -250,10 +250,11 @@ p { margin-bottom: 1rem; font-size: 1.05rem; }
   transition: all var(--transition-base);
 }
 .nav__cta:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.12) !important;
   border-color: #fff;
+  color: #fff;
   transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 /* Mobile Nav */
