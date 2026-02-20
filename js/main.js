@@ -219,13 +219,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Puppy Card Image Gallery (click to cycle) ---
+  // --- Puppy Card Image Gallery (click, tap, swipe to cycle) ---
   document.querySelectorAll('.puppy-gallery').forEach(gallery => {
     const images = gallery.querySelectorAll('.puppy-card__image');
     const dots = gallery.querySelectorAll('.puppy-gallery__dot');
     let current = 0;
+    const total = images.length;
 
-    if (images.length <= 1) return;
+    if (total <= 1) return;
+
+    // Add photo counter and tap/swipe hint (injected for all galleries)
+    const counter = document.createElement('span');
+    counter.className = 'puppy-gallery__counter';
+    counter.setAttribute('aria-hidden', 'true');
+    const hint = document.createElement('span');
+    hint.className = 'puppy-gallery__hint';
+    hint.textContent = 'Tap or swipe';
+    hint.setAttribute('aria-hidden', 'true');
+    gallery.appendChild(counter);
+    gallery.appendChild(hint);
 
     // Hide all but first
     images.forEach((img, i) => {
@@ -233,14 +245,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const showImage = (index) => {
+      current = ((index % total) + total) % total;
       images.forEach((img, i) => {
-        img.style.display = i === index ? 'block' : 'none';
+        img.style.display = i === current ? 'block' : 'none';
       });
       dots.forEach((dot, i) => {
-        dot.classList.toggle('puppy-gallery__dot--active', i === index);
+        dot.classList.toggle('puppy-gallery__dot--active', i === current);
       });
-      current = index;
+      counter.textContent = `${current + 1} / ${total}`;
+      hint.classList.add('puppy-gallery__hint--dismissed');
     };
+
+    showImage(0);
 
     dots.forEach((dot, i) => {
       dot.addEventListener('click', (e) => {
@@ -249,10 +265,27 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Click image to advance
-    gallery.addEventListener('click', () => {
-      showImage((current + 1) % images.length);
+    // Click/tap image to advance
+    gallery.addEventListener('click', (e) => {
+      if (!e.target.closest('.puppy-gallery__dot')) {
+        showImage(current + 1);
+      }
     });
+
+    // Touch swipe support
+    let touchStartX = 0;
+    const SWIPE_THRESHOLD = 50;
+    gallery.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    gallery.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].clientX;
+      const delta = touchStartX - touchEndX;
+      if (Math.abs(delta) >= SWIPE_THRESHOLD) {
+        if (delta > 0) showImage(current + 1);
+        else showImage(current - 1);
+      }
+    }, { passive: true });
   });
 
 });
