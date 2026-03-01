@@ -1,0 +1,32 @@
+{
+  "name": "heritage-hill-aussies",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@portabletext/react": "^3.1.0",
+    "@sanity/image-url": "^1.0.2",
+    "@sanity/vision": "^3.57.0",
+    "next": "^14.2.0",
+    "next-sanity": "^9.4.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "sanity": "^3.57.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.0",
+    "postcss": "^8.4.45",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.5.0"
+  }
+}

@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #523b2e;
+  --color-primary-light: #8f6543;
+  --color-accent: #da8a3b;
+  --color-accent-light: #ebc28b;
+  --color-bg: #fdfcfb;
+  --color-bg-warm: #f8f6f3;
+  --color-text: #2c2c2c;
+  --color-text-muted: #6b6b6b;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply antialiased;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+@layer components {
+  .section-label {
+    @apply text-sm font-medium uppercase tracking-widest text-amber-700;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 font-medium rounded-lg transition-all duration-200;
+  }
+
+  .btn--primary {
+    @apply bg-amber-700 text-white hover:bg-amber-800;
+  }
+
+  .btn--secondary {
+    @apply bg-stone-800 text-white hover:bg-stone-900;
+  }
+
+  .btn--outline {
+    @apply border-2 border-stone-800 text-stone-800 hover:bg-stone-800 hover:text-white;
+  }
+
+  .btn--outline-white {
+    @apply border-2 border-white text-white hover:bg-white hover:text-stone-800;
+  }
+
+  .btn--lg {
+    @apply px-8 py-4 text-lg;
+  }
+
+  .btn--sm {
+    @apply px-4 py-2 text-sm;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
