@@ -1,4 +1,4 @@
-import { client } from '@/sanity/lib/client';
+import { client, isSanityConfigured } from '@/sanity/lib/client';
 import { puppiesQuery } from '@/sanity/lib/queries';
 import PuppyCard from '@/components/PuppyCard';
 import Link from 'next/link';
@@ -19,8 +19,15 @@ export const metadata = {
   description: 'Browse our available Australian Shepherd puppies. Each puppy comes with AKC registration, health guarantee, and lifetime support.',
 };
 
-async function getPuppies() {
-  return client.fetch<Puppy[]>(puppiesQuery);
+async function getPuppies(): Promise<Puppy[]> {
+  if (!isSanityConfigured) {
+    return [];
+  }
+  try {
+    return await client.fetch<Puppy[]>(puppiesQuery);
+  } catch {
+    return [];
+  }
 }
 
 export default async function PuppiesPage() {

@@ -1,10 +1,8 @@
 import { notFound } from 'next/navigation';
-import { client } from '@/sanity/lib/client';
+import { client, isSanityConfigured, urlFor } from '@/sanity/lib/client';
 import { pageBySlugQuery } from '@/sanity/lib/queries';
 import { PortableText } from '@portabletext/react';
 import { portableTextComponents } from '@/components/PortableTextComponents';
-import Image from 'next/image';
-import { urlFor } from '@/sanity/lib/client';
 
 interface PageData {
   _id: string;
@@ -26,7 +24,14 @@ interface PageProps {
 }
 
 async function getPage(slug: string): Promise<PageData | null> {
-  return client.fetch(pageBySlugQuery, { slug });
+  if (!isSanityConfigured) {
+    return null;
+  }
+  try {
+    return await client.fetch(pageBySlugQuery, { slug });
+  } catch {
+    return null;
+  }
 }
 
 export async function generateMetadata({ params }: PageProps) {

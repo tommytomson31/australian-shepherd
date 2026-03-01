@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { client } from '@/sanity/lib/client';
+import { client, isSanityConfigured } from '@/sanity/lib/client';
 import { galleryQuery } from '@/sanity/lib/queries';
 
 interface GalleryImage {
@@ -22,8 +22,15 @@ export const metadata = {
   description: 'Browse photos of our Australian Shepherd puppies, parents, and happy families.',
 };
 
-async function getGalleries() {
-  return client.fetch<Gallery[]>(galleryQuery);
+async function getGalleries(): Promise<Gallery[]> {
+  if (!isSanityConfigured) {
+    return [];
+  }
+  try {
+    return await client.fetch<Gallery[]>(galleryQuery);
+  } catch {
+    return [];
+  }
 }
 
 export default async function GalleryPage() {

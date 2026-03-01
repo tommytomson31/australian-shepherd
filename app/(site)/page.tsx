@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { client } from '@/sanity/lib/client';
+import { client, isSanityConfigured } from '@/sanity/lib/client';
 import { availablePuppiesQuery, testimonialsQuery } from '@/sanity/lib/queries';
 import PuppyCard from '@/components/PuppyCard';
 
@@ -23,11 +23,18 @@ interface Testimonial {
 }
 
 async function getHomeData() {
-  const [puppies, testimonials] = await Promise.all([
-    client.fetch<Puppy[]>(availablePuppiesQuery),
-    client.fetch<Testimonial[]>(testimonialsQuery),
-  ]);
-  return { puppies, testimonials };
+  if (!isSanityConfigured) {
+    return { puppies: [], testimonials: [] };
+  }
+  try {
+    const [puppies, testimonials] = await Promise.all([
+      client.fetch<Puppy[]>(availablePuppiesQuery),
+      client.fetch<Testimonial[]>(testimonialsQuery),
+    ]);
+    return { puppies, testimonials };
+  } catch {
+    return { puppies: [], testimonials: [] };
+  }
 }
 
 export default async function HomePage() {
