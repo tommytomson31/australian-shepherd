@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { client, isSanityConfigured } from '@/sanity/lib/client';
-import { fallbackPuppies } from '@/sanity/lib/fallbackPuppies';
-import { availablePuppiesQuery, testimonialsQuery } from '@/sanity/lib/queries';
+import { getAvailablePuppiesAlways } from '@/sanity/lib/getPuppies';
+import { testimonialsQuery } from '@/sanity/lib/queries';
 import PuppyCard from '@/components/PuppyCard';
 
 interface Puppy {
@@ -24,22 +24,16 @@ interface Testimonial {
 }
 
 async function getHomeData() {
-  if (!isSanityConfigured) {
-    return { puppies: fallbackPuppies, testimonials: [] };
-  }
-  try {
-    const [puppies, testimonials] = await Promise.all([
-      client.fetch<Puppy[]>(availablePuppiesQuery),
-      client.fetch<Testimonial[]>(testimonialsQuery),
-    ]);
-    return {
-      puppies: puppies?.length ? puppies : fallbackPuppies,
-      testimonials: testimonials ?? [],
-    };
-  } catch {
-    return { puppies: fallbackPuppies, testimonials: [] };
-  }
+  const [puppies, testimonials] = await Promise.all([
+    getAvailablePuppiesAlways(),
+    isSanityConfigured
+      ? client.fetch<Testimonial[]>(testimonialsQuery).catch(() => [])
+      : Promise.resolve([]),
+  ]);
+  return { puppies, testimonials: testimonials ?? [] };
 }
+
+export const dynamic = 'force-dynamic';
 
 export default async function HomePage() {
   const { puppies, testimonials } = await getHomeData();

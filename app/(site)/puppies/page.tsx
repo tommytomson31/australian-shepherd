@@ -1,6 +1,4 @@
-import { client, isSanityConfigured } from '@/sanity/lib/client';
-import { fallbackPuppies } from '@/sanity/lib/fallbackPuppies';
-import { puppiesQuery } from '@/sanity/lib/queries';
+import { getPuppiesAlways } from '@/sanity/lib/getPuppies';
 import PuppyCard from '@/components/PuppyCard';
 import Link from 'next/link';
 
@@ -20,20 +18,10 @@ export const metadata = {
   description: 'Browse our available Australian Shepherd puppies. Each puppy comes with AKC registration, health guarantee, and lifetime support.',
 };
 
-async function getPuppies(): Promise<Puppy[]> {
-  if (!isSanityConfigured) {
-    return fallbackPuppies;
-  }
-  try {
-    const puppies = await client.fetch<Puppy[]>(puppiesQuery);
-    return puppies?.length ? puppies : fallbackPuppies;
-  } catch {
-    return fallbackPuppies;
-  }
-}
+export const dynamic = 'force-dynamic';
 
 export default async function PuppiesPage() {
-  const puppies = await getPuppies();
+  const puppies = await getPuppiesAlways();
   const availablePuppies = puppies.filter((p) => p.status === 'available');
   const otherPuppies = puppies.filter((p) => p.status !== 'available');
 

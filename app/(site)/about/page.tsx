@@ -45,8 +45,8 @@ export default function AboutPage() {
             </div>
             <div className="split__media">
               <Image
-                src="/images/Parents and past litters/first section image.jpg"
-                alt="Heritage Hill Aussies Family"
+                src="/images/Parents and past litters/About us image.jpg"
+                alt="Heritage Hill Aussies - Our family and Australian Shepherds"
                 width={500}
                 height={400}
                 style={{

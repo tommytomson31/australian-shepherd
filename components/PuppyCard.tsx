@@ -2,6 +2,10 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
+import { PLACEHOLDER_IMAGE_DATA_URI } from '@/sanity/lib/fallbackPuppies';
+
+const FALLBACK_IMAGE_PATH = '/images/Parents and past litters/first section image.jpg';
 
 interface PuppyCardProps {
   name: string;
@@ -22,7 +26,8 @@ export default function PuppyCard({
   mainImage,
   images = [],
 }: PuppyCardProps) {
-  const imageUrl = mainImage || (images?.[0]) || '/images/Parents and past litters/first section image.jpg';
+  const resolvedUrl = mainImage || images?.[0] || FALLBACK_IMAGE_PATH;
+  const [imageUrl, setImageUrl] = useState(resolvedUrl);
   const isUnavailable = status !== 'available';
   const statusLabels = {
     available: 'Available',
@@ -39,6 +44,8 @@ export default function PuppyCard({
           width={400}
           height={400}
           className="puppy-card__image"
+          unoptimized={imageUrl === PLACEHOLDER_IMAGE_DATA_URI || imageUrl.startsWith('/images/')}
+          onError={() => setImageUrl(PLACEHOLDER_IMAGE_DATA_URI)}
         />
         <span className={`puppy-card__badge badge badge--${status}`}>
           {statusLabels[status]}

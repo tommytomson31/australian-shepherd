@@ -109,15 +109,27 @@ Configure global settings:
 - Social media links
 - Logo
 
-## Moving Images to Public Folder
+## Puppy images (never lose photos)
 
-Your existing images need to be accessible by Next.js. The images are already in the `images` folder, which is included in the `public` directory structure for Next.js.
+Puppy photos live in **`public/images`** and should be **committed and pushed to GitHub**. That way the live site (e.g. Vercel) has the photos from the repo—**deleting the folder on your PC won’t affect the website** once they’re on GitHub.
 
-To ensure images work:
-1. Create a `public` folder in your project root (if not exists)
-2. Move or copy the `images` folder into `public`
+- Each puppy has a folder named **`Name Gender Age Price`** (e.g. `Kate Female 9 weeks 1000`).
+- Put a **`main.jpg`** (or `main.png`) in a folder to set the profile photo; otherwise the first image is used.
+- See **`public/images/README.md`** for the full folder structure.
 
-The images will then be accessible at paths like `/images/Parents and past litters/Hero Image.jpg`.
+The site loads puppies from these folders first, then Sanity, then a fallback list.
+
+### Store photos on GitHub (so your PC folder is optional)
+
+Do this once (and after any new photos) so the website doesn’t depend on your local folder:
+
+```bash
+git add public/images
+git commit -m "Add puppy photos to repo"
+git push origin main
+```
+
+After this, the images live on GitHub. Your host (e.g. Vercel) pulls from the repo when it builds, so the site will keep showing the photos even if you delete `public/images` on your PC. You can re-clone the repo anytime to get the images back locally.
 
 ## Deployment
 
