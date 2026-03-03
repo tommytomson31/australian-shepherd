@@ -9,7 +9,7 @@ import fs from 'fs';
 import path from 'path';
 
 const IMAGE_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.gif', '.webp']);
-const SKIP_FOLDERS = new Set(['parents and past litters', 'reserved', 'reserved 1']);
+const SKIP_FOLDERS = new Set(['parents and past litters']);
 
 export interface PuppyFromFolder {
   _id: string;
@@ -25,6 +25,18 @@ export interface PuppyFromFolder {
 function isImageFile(filename: string): boolean {
   const ext = path.extname(filename).toLowerCase();
   return IMAGE_EXTENSIONS.has(ext);
+}
+
+/** Parse reserved/sold folder: "Reserved", "Reserved 1", "Sold", "Sold - Name", etc. */
+function parseReservedOrSoldFolder(folderName: string): { name: string; status: 'reserved' | 'sold' } | null {
+  const lower = folderName.trim().toLowerCase();
+  if (lower.startsWith('sold')) {
+    return { name: folderName.trim() || 'Sold', status: 'sold' };
+  }
+  if (lower.startsWith('reserved')) {
+    return { name: folderName.trim() || 'Reserved', status: 'reserved' };
+  }
+  return null;
 }
 
 /** Parse folder name like "Kate Female 9 weeks 1000" or "Jake male 9 weeks 800" */
@@ -77,9 +89,6 @@ export function getPuppiesFromImageFolders(): PuppyFromFolder[] {
       const folderName = ent.name;
       if (SKIP_FOLDERS.has(folderName.toLowerCase())) continue;
 
-      const parsed = parseFolderName(folderName);
-      if (!parsed) continue;
-
       const folderPath = path.join(imagesDir, folderName);
       const files = fs.readdirSync(folderPath).filter((f) => {
         const full = path.join(folderPath, f);
@@ -88,12 +97,28 @@ export function getPuppiesFromImageFolders(): PuppyFromFolder[] {
 
       if (files.length === 0) continue;
 
-      // Use raw path (no encoding) so static server finds folders with spaces (e.g. "Kate Female 9 weeks 1000")
       const basePath = '/images/' + folderName;
       const imageUrls = files.map((f) => `${basePath}/${f}`);
-
       const mainFile = files.find((f) => path.basename(f, path.extname(f)).toLowerCase() === 'main');
       const mainImage = mainFile ? `${basePath}/${mainFile}` : imageUrls[0];
+
+      const reservedOrSold = parseReservedOrSoldFolder(folderName);
+      if (reservedOrSold) {
+        puppies.push({
+          _id: 'folder-' + folderName.replace(/\s+/g, '-').toLowerCase(),
+          name: reservedOrSold.name,
+          gender: 'female',
+          age: '—',
+          price: 0,
+          status: reservedOrSold.status,
+          mainImage,
+          images: imageUrls,
+        });
+        continue;
+      }
+
+      const parsed = parseFolderName(folderName);
+      if (!parsed) continue;
 
       puppies.push({
         _id: 'folder-' + folderName.replace(/\s+/g, '-').toLowerCase(),
@@ -107,7 +132,11 @@ export function getPuppiesFromImageFolders(): PuppyFromFolder[] {
       });
     }
 
-    return puppies.sort((a, b) => a.name.localeCompare(b.name));
+    return puppies.sort((a, b) => {
+      const order = { available: 0, reserved: 1, sold: 2 };
+      if (order[a.status] !== order[b.status]) return order[a.status] - order[b.status];
+      return a.name.localeCompare(b.name);
+    });
   } catch {
     return [];
   }
