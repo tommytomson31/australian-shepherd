@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { client, isSanityConfigured } from '@/sanity/lib/client';
+import { fallbackPuppies } from '@/sanity/lib/fallbackPuppies';
 import { availablePuppiesQuery, testimonialsQuery } from '@/sanity/lib/queries';
 import PuppyCard from '@/components/PuppyCard';
 
@@ -24,16 +25,19 @@ interface Testimonial {
 
 async function getHomeData() {
   if (!isSanityConfigured) {
-    return { puppies: [], testimonials: [] };
+    return { puppies: fallbackPuppies, testimonials: [] };
   }
   try {
     const [puppies, testimonials] = await Promise.all([
       client.fetch<Puppy[]>(availablePuppiesQuery),
       client.fetch<Testimonial[]>(testimonialsQuery),
     ]);
-    return { puppies, testimonials };
+    return {
+      puppies: puppies?.length ? puppies : fallbackPuppies,
+      testimonials: testimonials ?? [],
+    };
   } catch {
-    return { puppies: [], testimonials: [] };
+    return { puppies: fallbackPuppies, testimonials: [] };
   }
 }
 

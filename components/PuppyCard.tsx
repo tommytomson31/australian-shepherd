@@ -9,7 +9,7 @@ interface PuppyCardProps {
   age: string;
   price: number;
   status: 'available' | 'reserved' | 'sold';
-  mainImage: string;
+  mainImage: string | null | undefined;
   images?: string[];
 }
 
@@ -22,6 +22,7 @@ export default function PuppyCard({
   mainImage,
   images = [],
 }: PuppyCardProps) {
+  const imageUrl = mainImage || (images?.[0]) || '/images/Parents and past litters/first section image.jpg';
   const isUnavailable = status !== 'available';
   const statusLabels = {
     available: 'Available',
@@ -33,7 +34,7 @@ export default function PuppyCard({
     <div className={`puppy-card ${isUnavailable ? 'puppy-card--unavailable' : ''}`}>
       <div className="puppy-card__image-wrapper">
         <Image
-          src={mainImage}
+          src={imageUrl}
           alt={`${name} - Australian Shepherd Puppy`}
           width={400}
           height={400}

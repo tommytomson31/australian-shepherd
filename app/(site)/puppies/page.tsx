@@ -1,4 +1,5 @@
 import { client, isSanityConfigured } from '@/sanity/lib/client';
+import { fallbackPuppies } from '@/sanity/lib/fallbackPuppies';
 import { puppiesQuery } from '@/sanity/lib/queries';
 import PuppyCard from '@/components/PuppyCard';
 import Link from 'next/link';
@@ -21,12 +22,13 @@ export const metadata = {
 
 async function getPuppies(): Promise<Puppy[]> {
   if (!isSanityConfigured) {
-    return [];
+    return fallbackPuppies;
   }
   try {
-    return await client.fetch<Puppy[]>(puppiesQuery);
+    const puppies = await client.fetch<Puppy[]>(puppiesQuery);
+    return puppies?.length ? puppies : fallbackPuppies;
   } catch {
-    return [];
+    return fallbackPuppies;
   }
 }
 
