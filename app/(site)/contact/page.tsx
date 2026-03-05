@@ -47,6 +47,12 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                   name="puppyInterest"
                   value={puppyFromUrl}
                 />
+                {puppyFromUrl && (
+                  <div className="form-group contact-form__puppy-prefill">
+                    <span className="contact-form__puppy-label">Inquiring about</span>
+                    <span className="contact-form__puppy-value" id="puppy-interest-display">{puppyFromUrl}</span>
+                  </div>
+                )}
                 <div className="form-row">
                   <div className="form-group">
                     <label htmlFor="first-name">
@@ -82,7 +88,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
 
                 <div className="form-group">
                   <label htmlFor="subject">Subject</label>
-                  <select id="subject" name="subject">
+                  <select id="subject" name="subject" defaultValue={puppyFromUrl ? 'puppy-inquiry' : ''}>
                     <option value="">Select a subject...</option>
                     <option value="puppy-inquiry">Puppy Inquiry</option>
                     <option value="upcoming-litters">Upcoming Litters</option>

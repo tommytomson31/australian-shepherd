@@ -915,6 +915,35 @@ p { margin-bottom: 1rem; font-size: 1.05rem; }
   text-align: center;
 }
 
+.contact-form__puppy-prefill {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-cream, #faf8f5);
+  border-radius: var(--radius-sm, 6px);
+  margin-bottom: var(--space-md);
+  border: 1px solid var(--color-border, #e8e4df);
+}
+.contact-form__puppy-label {
+  font-size: 0.875rem;
+  color: var(--color-text-lighter);
+  font-weight: 500;
+}
+.contact-form__puppy-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-primary, #2c5282);
+}
+.puppy-card__image-link {
+  display: block;
+  cursor: pointer;
+  line-height: 0;
+}
+.puppy-card__image-link:hover {
+  opacity: 0.97;
+}
+
 /* Contact Sidebar Cards */
 .contact-sidebar { display: flex; flex-direction: column; gap: var(--space-md); }
 .contact-card {

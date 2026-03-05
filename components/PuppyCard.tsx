@@ -45,6 +45,8 @@ export default function PuppyCard({
   return (
     <div className={`puppy-card ${isUnavailable ? 'puppy-card--unavailable' : ''}`}>
       <div className="puppy-card__image-wrapper puppy-card__image-wrapper--gallery">
+        {status === 'available' ? (
+          <Link href={`/contact?puppy=${encodeURIComponent(name)}`} className="puppy-card__image-link" aria-label={`Inquire about ${name}`}>
         <Image
           key={currentIndex}
           src={displayUrl}
@@ -55,6 +57,19 @@ export default function PuppyCard({
           unoptimized={displayUrl === PLACEHOLDER_IMAGE_DATA_URI || displayUrl.startsWith('/images/')}
           onError={() => setImageError(true)}
         />
+          </Link>
+        ) : (
+        <Image
+          key={currentIndex}
+          src={displayUrl}
+          alt={`${name} - Australian Shepherd Puppy (photo ${currentIndex + 1} of ${allSlides.length})`}
+          width={400}
+          height={400}
+          className="puppy-card__image"
+          unoptimized={displayUrl === PLACEHOLDER_IMAGE_DATA_URI || displayUrl.startsWith('/images/')}
+          onError={() => setImageError(true)}
+        />
+        )}
         <span className={`puppy-card__badge badge badge--${status}`}>
           {statusLabels[status]}
         </span>
