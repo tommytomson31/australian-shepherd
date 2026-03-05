@@ -3,7 +3,12 @@ export const metadata = {
   description: 'Get in touch with Heritage Hill Aussies. Inquire about our available Australian Shepherd puppies or upcoming litters.',
 };
 
-export default function ContactPage() {
+type ContactPageProps = { searchParams?: Promise<{ puppy?: string }> };
+
+export default async function ContactPage({ searchParams }: ContactPageProps) {
+  const params = await searchParams;
+  const puppyFromUrl = params?.puppy ?? '';
+
   return (
     <>
       {/* Page Hero */}
@@ -28,24 +33,37 @@ export default function ContactPage() {
                 and we&apos;ll get back to you as soon as possible.
               </p>
 
-              <form action="https://formspree.io/f/your-form-id" method="POST">
+              <form
+                id="contact-form"
+                action="#"
+                method="post"
+                noValidate
+                data-formspree-id={process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID ?? ''}
+                data-puppy-initial={puppyFromUrl}
+              >
+                <input
+                  type="hidden"
+                  id="puppy-interest-input"
+                  name="puppyInterest"
+                  value={puppyFromUrl}
+                />
                 <div className="form-row">
                   <div className="form-group">
-                    <label htmlFor="firstName">
+                    <label htmlFor="first-name">
                       First Name <span className="required">*</span>
                     </label>
                     <input
                       type="text"
-                      id="firstName"
+                      id="first-name"
                       name="firstName"
                       required
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="lastName">
+                    <label htmlFor="last-name">
                       Last Name <span className="required">*</span>
                     </label>
-                    <input type="text" id="lastName" name="lastName" required />
+                    <input type="text" id="last-name" name="lastName" required />
                   </div>
                 </div>
 
