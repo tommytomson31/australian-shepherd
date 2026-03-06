@@ -1,3 +1,5 @@
+import ContactForm from '@/components/ContactForm';
+
 export const metadata = {
   title: 'Contact Us | Heritage Hill Aussies',
   description: 'Get in touch with Heritage Hill Aussies. Inquire about our available Australian Shepherd puppies or upcoming litters.',
@@ -32,94 +34,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                 breeding program, we&apos;re here to help. Fill out the form below
                 and we&apos;ll get back to you as soon as possible.
               </p>
-
-              <div id="contact-form-alert" className="contact-form__alert contact-form__alert--hidden" role="alert" aria-live="polite" aria-atomic="true" />
-              <form
-                id="contact-form"
-                action="#"
-                method="post"
-                noValidate
-                data-formspree-id={process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID ?? ''}
-                data-puppy-initial={puppyFromUrl}
-              >
-                <input
-                  type="hidden"
-                  id="puppy-interest-input"
-                  name="puppyInterest"
-                  value={puppyFromUrl}
-                />
-                {puppyFromUrl && (
-                  <div className="form-group contact-form__puppy-prefill">
-                    <span className="contact-form__puppy-label">Inquiring about</span>
-                    <span className="contact-form__puppy-value" id="puppy-interest-display">{puppyFromUrl}</span>
-                  </div>
-                )}
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="first-name">
-                      First Name <span className="required">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="first-name"
-                      name="firstName"
-                      required
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="last-name">
-                      Last Name <span className="required">*</span>
-                    </label>
-                    <input type="text" id="last-name" name="lastName" required />
-                  </div>
-                </div>
-
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="email">
-                      Email Address <span className="required">*</span>
-                    </label>
-                    <input type="email" id="email" name="email" required />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" />
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="subject">Subject</label>
-                  <select id="subject" name="subject" defaultValue={puppyFromUrl ? 'puppy-inquiry' : ''}>
-                    <option value="">Select a subject...</option>
-                    <option value="puppy-inquiry">Puppy Inquiry</option>
-                    <option value="upcoming-litters">Upcoming Litters</option>
-                    <option value="general-question">General Question</option>
-                    <option value="adoption-process">Adoption Process</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="message">
-                    Message <span className="required">*</span>
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    required
-                    placeholder="Tell us about yourself and what you're looking for in a puppy..."
-                  ></textarea>
-                </div>
-
-                <button type="submit" className="btn btn--primary btn--lg btn--block contact-form__submit">
-                  Send Message
-                </button>
-
-                <p className="contact-form__note">
-                  We typically respond within 24-48 hours.
-                </p>
-              </form>
+              <ContactForm puppyFromUrl={puppyFromUrl} />
             </div>
 
             {/* Contact Sidebar */}
