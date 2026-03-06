@@ -935,6 +935,39 @@ p { margin-bottom: 1rem; font-size: 1.05rem; }
   font-weight: 600;
   color: var(--color-primary, #2c5282);
 }
+
+.contact-form__alert {
+  padding: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-lg);
+  border-radius: var(--radius-sm, 6px);
+  border: 1px solid transparent;
+}
+.contact-form__alert--hidden {
+  display: none;
+}
+.contact-form__alert--success {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #065f46;
+}
+.contact-form__alert--success strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.contact-form__alert--error {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #991b1b;
+}
+.contact-form__alert--error strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.contact-form__alert-body {
+  font-size: 0.9375rem;
+  opacity: 0.95;
+}
+
 .puppy-card__image-link {
   display: block;
   cursor: pointer;

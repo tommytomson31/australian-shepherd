@@ -33,6 +33,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                 and we&apos;ll get back to you as soon as possible.
               </p>
 
+              <div id="contact-form-alert" className="contact-form__alert contact-form__alert--hidden" role="alert" aria-live="polite" aria-atomic="true" />
               <form
                 id="contact-form"
                 action="#"

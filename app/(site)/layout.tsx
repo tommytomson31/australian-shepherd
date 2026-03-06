@@ -13,7 +13,7 @@ export default function SiteLayout({
       <Navigation />
       <main>{children}</main>
       <Footer />
-      <Script src="/js/main.js" strategy="afterInteractive" />
+      <Script src="/js/main.js?v=2" strategy="afterInteractive" />
     </>
   );
 }

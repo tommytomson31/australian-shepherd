@@ -183,6 +183,7 @@ function initContactAndUI() {
 
       const submitBtn = contactForm.querySelector('.contact-form__submit');
       const note = contactForm.querySelector('.contact-form__note');
+      const alertEl = document.getElementById('contact-form-alert');
       const formspreeId = contactForm.getAttribute('data-formspree-id');
 
       function setState(btnText, noteText, disabled) {
@@ -191,9 +192,23 @@ function initContactAndUI() {
         if (note) note.textContent = noteText;
       }
 
+      function showAlert(type, title, body) {
+        if (!alertEl) return;
+        alertEl.className = 'contact-form__alert contact-form__alert--' + type;
+        alertEl.innerHTML = '<strong>' + title + '</strong>' + (body ? '<br><span class="contact-form__alert-body">' + body + '</span>' : '');
+        alertEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+      function hideAlert() {
+        if (alertEl) {
+          alertEl.className = 'contact-form__alert contact-form__alert--hidden';
+          alertEl.innerHTML = '';
+        }
+      }
+
       if (formspreeId && formspreeId.trim()) {
         const originalText = submitBtn ? submitBtn.textContent : 'Send Message';
-        setState('Sending...', '', true);
+        hideAlert();
+        setState('Sending...', 'Sending your message...', true);
         try {
           const res = await fetch('https://formspree.io/f/' + formspreeId.trim(), {
             method: 'POST',
@@ -210,18 +225,21 @@ function initContactAndUI() {
             })
           });
           if (res.ok) {
-            setState('Message sent!', 'Thank you! We\'ll get back to you within 24–48 hours.', true);
+            showAlert('success', 'Message sent successfully!', 'Thank you! We\'ll get back to you within 24–48 hours.');
+            setState('Sent', '', true);
             contactForm.reset();
             if (document.getElementById('puppy-interest-input')) document.getElementById('puppy-interest-input').value = contactForm.getAttribute('data-puppy-initial') || '';
             setTimeout(() => {
               setState(originalText, 'We typically respond within 24–48 hours.', false);
-            }, 6000);
+              hideAlert();
+            }, 8000);
           } else {
-            const err = await res.json().catch(() => ({}));
-            setState(originalText, 'Something went wrong. Please try again or email us directly.', false);
+            showAlert('error', 'Something went wrong.', 'Please try again or email us directly at aussiepuppies06@gmail.com.');
+            setState(originalText, '', false);
           }
         } catch (err) {
-          setState(originalText, 'Unable to send. Please check your connection or email us directly.', false);
+          showAlert('error', 'Message could not be sent.', 'Please check your connection or email us directly at aussiepuppies06@gmail.com.');
+          setState(originalText, '', false);
         }
         return;
       }
