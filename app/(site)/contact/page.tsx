@@ -44,8 +44,8 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                 <ul className="contact-card__list">
                   <li className="contact-card__item">
                     <span className="contact-card__label">Email</span>
-                    <a href="mailto:exceptionalaussies@gmail.com">
-                      exceptionalaussies@gmail.com
+                    <a href="mailto:aussiepuppies06@gmail.com">
+                      aussiepuppies06@gmail.com
                     </a>
                   </li>
                   <li className="contact-card__item">

@@ -62,7 +62,7 @@ export default function PrivacyPage() {
           <h2>Contact Us</h2>
           <p>
             If you have questions about this Privacy Policy, please contact us
-            at <a href="mailto:exceptionalaussies@gmail.com">exceptionalaussies@gmail.com</a>.
+            at <a href="mailto:aussiepuppies06@gmail.com">aussiepuppies06@gmail.com</a>.
           </p>
         </div>
       </section>
