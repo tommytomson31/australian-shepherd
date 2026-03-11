@@ -41,7 +41,7 @@ export default function Footer() {
           <div>
             <h4>Contact Us</h4>
             <ul className="footer__links">
-              <li>Email: aussiepuppies06@gmail.com</li>
+              <li>Email: exceptionalaussies@gmail.com</li>
               <li>Phone: +1 (757) 964-5341</li>
               <li>Location: United States</li>
             </ul>

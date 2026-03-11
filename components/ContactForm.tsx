@@ -74,7 +74,7 @@ export default function ContactForm({ puppyFromUrl = '' }: ContactFormProps) {
         'Message:',
         message,
       ].join('\n');
-      window.location.href = `mailto:aussiepuppies06@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = `mailto:exceptionalaussies@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     }
   }
 
@@ -97,7 +97,7 @@ export default function ContactForm({ puppyFromUrl = '' }: ContactFormProps) {
           <strong>Something went wrong.</strong>
           <br />
           <span className="contact-form__alert-body">
-            {errorMsg || 'Please try again or email us directly at aussiepuppies06@gmail.com.'}
+            {errorMsg || 'Please try again or email us directly at exceptionalaussies@gmail.com.'}
           </span>
         </div>
       )}
