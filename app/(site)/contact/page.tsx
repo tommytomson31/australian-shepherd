@@ -1,9 +1,34 @@
 import ContactForm from '@/components/ContactForm';
+import JsonLd from '@/components/JsonLd';
+import { faqPageSchema, webPageSchema } from '@/lib/schema';
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://heritagehillaussies.com';
 
 export const metadata = {
-  title: 'Contact Us | Heritage Hill Aussies',
-  description: 'Get in touch with Heritage Hill Aussies. Inquire about our available Australian Shepherd puppies or upcoming litters.',
+  title: 'Contact Us',
+  description:
+    'Get in touch with Heritage Hill Aussies. Inquire about available Australian Shepherd puppies, upcoming litters, shipping, and adoption process.',
+  alternates: { canonical: `${baseUrl}/contact` },
 };
+
+const CONTACT_FAQS = [
+  {
+    q: 'Do you ship puppies?',
+    a: 'Yes, we can arrange safe shipping for puppies to approved homes. We work with reputable pet transport services to ensure your puppy arrives safely.',
+  },
+  {
+    q: 'What is included with each puppy?',
+    a: 'Every puppy comes with AKC registration, current vaccinations, vet health check, medical records, health guarantee, and lifetime breeder support.',
+  },
+  {
+    q: 'How do I reserve a puppy?',
+    a: "Contact us about the puppy you're interested in. After approval, a deposit secures your puppy until they're ready to go home.",
+  },
+  {
+    q: 'When can puppies go home?',
+    a: "Puppies are ready for their new homes at 8-9 weeks of age, after they've received appropriate vaccinations and veterinary clearance.",
+  },
+];
 
 type ContactPageProps = { searchParams?: Promise<{ puppy?: string }> };
 
@@ -11,8 +36,23 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
   const params = await searchParams;
   const puppyFromUrl = params?.puppy ?? '';
 
+  const breadcrumbs = [
+    { name: 'Home', path: '/' },
+    { name: 'Contact Us', path: '/contact' },
+  ];
+  const faqSchema = faqPageSchema(
+    CONTACT_FAQS.map((f) => ({ question: f.q, answer: f.a }))
+  );
+  const webPage = webPageSchema({
+    name: 'Contact Us | Heritage Hill Aussies',
+    description: metadata.description,
+    path: '/contact',
+    breadcrumbs,
+  });
+
   return (
     <>
+      <JsonLd data={[webPage, faqSchema]} />
       {/* Page Hero */}
       <section className="page-hero">
         <div className="page-hero__content">
@@ -82,24 +122,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
             <h2>Frequently Asked Questions</h2>
           </div>
           <div className="faq-grid">
-            {[
-              {
-                q: 'Do you ship puppies?',
-                a: 'Yes, we can arrange safe shipping for puppies to approved homes. We work with reputable pet transport services to ensure your puppy arrives safely.',
-              },
-              {
-                q: 'What is included with each puppy?',
-                a: 'Every puppy comes with AKC registration, current vaccinations, vet health check, medical records, health guarantee, and lifetime breeder support.',
-              },
-              {
-                q: 'How do I reserve a puppy?',
-                a: 'Contact us about the puppy you\'re interested in. After approval, a deposit secures your puppy until they\'re ready to go home.',
-              },
-              {
-                q: 'When can puppies go home?',
-                a: 'Puppies are ready for their new homes at 8-9 weeks of age, after they\'ve received appropriate vaccinations and veterinary clearance.',
-              },
-            ].map((faq, i) => (
+            {CONTACT_FAQS.map((faq, i) => (
               <div key={i} className="faq-card">
                 <h4 className="faq-card__question">{faq.q}</h4>
                 <p className="faq-card__answer">{faq.a}</p>

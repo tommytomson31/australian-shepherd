@@ -1,6 +1,10 @@
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://heritagehillaussies.com';
+
 export const metadata = {
-  title: 'Privacy Policy | Heritage Hill Aussies',
-  description: 'Privacy policy for Heritage Hill Aussies website.',
+  title: 'Privacy Policy',
+  description:
+    'Privacy policy for Heritage Hill Aussies. How we collect, use, and protect your information.',
+  alternates: { canonical: `${baseUrl}/privacy` },
 };
 
 export default function PrivacyPage() {

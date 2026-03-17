@@ -122,3 +122,8 @@ export const siteSettingsQuery = groq`
     socialMedia
   }
 `;
+
+/** All page slugs for sitemap (dynamic [slug] routes). */
+export const allPageSlugsQuery = groq`
+  *[_type == "page" && defined(slug.current)]{ "slug": slug.current }
+`;

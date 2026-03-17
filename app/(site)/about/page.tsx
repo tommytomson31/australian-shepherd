@@ -1,9 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://heritagehillaussies.com';
+
 export const metadata = {
-  title: 'About Us | Heritage Hill Aussies',
-  description: 'Learn about Heritage Hill Aussies - a family-owned Australian Shepherd breeder dedicated to raising healthy, well-socialized puppies.',
+  title: 'About Us',
+  description:
+    'Learn about Heritage Hill Aussies — a family-owned Australian Shepherd breeder dedicated to raising healthy, well-socialized puppies with champion bloodlines.',
+  alternates: { canonical: `${baseUrl}/about` },
 };
 
 export default function AboutPage() {

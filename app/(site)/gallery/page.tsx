@@ -17,9 +17,13 @@ interface Gallery {
   images: GalleryImage[];
 }
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://heritagehillaussies.com';
+
 export const metadata = {
-  title: 'Photo Gallery | Heritage Hill Aussies',
-  description: 'Browse photos of our Australian Shepherd puppies, parents, and happy families.',
+  title: 'Photo Gallery',
+  description:
+    'Browse photos of our Australian Shepherd puppies, parents, and happy families.',
+  alternates: { canonical: `${baseUrl}/gallery` },
 };
 
 async function getGalleries(): Promise<Gallery[]> {

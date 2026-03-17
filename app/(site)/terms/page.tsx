@@ -1,6 +1,10 @@
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://heritagehillaussies.com';
+
 export const metadata = {
-  title: 'Terms of Service | Heritage Hill Aussies',
-  description: 'Terms of service for Heritage Hill Aussies website.',
+  title: 'Terms of Service',
+  description:
+    'Terms of service for Heritage Hill Aussies website and puppy adoption process.',
+  alternates: { canonical: `${baseUrl}/terms` },
 };
 
 export default function TermsPage() {

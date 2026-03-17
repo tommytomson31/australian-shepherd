@@ -13,9 +13,13 @@ interface Puppy {
   images: string[];
 }
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://heritagehillaussies.com';
+
 export const metadata = {
-  title: 'Available Puppies | Heritage Hill Aussies',
-  description: 'Browse our available Australian Shepherd puppies. Each puppy comes with AKC registration, health guarantee, and lifetime support.',
+  title: 'Available Puppies',
+  description:
+    'Browse our available Australian Shepherd puppies. Each puppy comes with AKC registration, health guarantee, and lifetime support.',
+  alternates: { canonical: `${baseUrl}/puppies` },
 };
 
 export const dynamic = 'force-dynamic';

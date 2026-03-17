@@ -4,6 +4,8 @@ import { client, isSanityConfigured } from '@/sanity/lib/client';
 import { getAvailablePuppiesAlways } from '@/sanity/lib/getPuppies';
 import { testimonialsQuery } from '@/sanity/lib/queries';
 import PuppyCard from '@/components/PuppyCard';
+import JsonLd from '@/components/JsonLd';
+import { webPageSchema } from '@/lib/schema';
 
 interface Puppy {
   _id: string;
@@ -40,8 +42,17 @@ export default async function HomePage() {
   const displayPuppies = puppies.slice(0, 3);
   const testimonial = testimonials[0];
 
+  const homePageSchema = webPageSchema({
+    name: 'Australian Shepherd Puppies | Heritage Hill Aussies',
+    description:
+      'Premier Australian Shepherd breeder. Family-raised, AKC-registered puppies with champion bloodlines, health guarantees and lifetime support.',
+    path: '/',
+    breadcrumbs: [{ name: 'Home', path: '/' }],
+  });
+
   return (
     <>
+      <JsonLd data={homePageSchema} />
       {/* Hero Section */}
       <section className="hero">
         <div
