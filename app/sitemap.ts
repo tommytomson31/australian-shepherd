@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { client, isSanityConfigured } from '@/sanity/lib/client';
 import { allPageSlugsQuery } from '@/sanity/lib/queries';
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://heritagehillaussies.com';
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://exceptionalaussies.com';
 
 /** LK Digital SOP 3.1.1: Dynamic sitemap, update within 24h of new URL. */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
