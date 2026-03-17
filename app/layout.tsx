@@ -75,9 +75,7 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: baseUrl },
   verification: {
-    // Optional: add when you have them
-    // google: 'google-site-verification-code',
-    // yandex: 'yandex-verification-code',
+    google: 'Ajr0PQI-ahsx1QXwEes1bCseJqRNMDNO7hLlrOxLi18',
   },
 };
 
