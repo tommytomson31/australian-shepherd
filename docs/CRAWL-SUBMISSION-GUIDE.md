@@ -56,6 +56,21 @@ Google will start crawling. Coverage and indexing may take a few days to weeks.
 2. Enter a URL (e.g. homepage, `/puppies`, `/contact`).
 3. Click **Request indexing** for important pages you want crawled soon.
 
+### 3.4 Sitemap “URL not allowed” errors
+
+If GSC shows **“Sitemap can be read, but has errors”** and **“URL not allowed for a Sitemap at this location”**, the **property URL and sitemap URLs do not match**.
+
+- The sitemap lists URLs like `https://heritagehillaussies.com` (no **www**).
+- If you added the property as `https://www.heritagehillaussies.com` (with **www**), Google treats that as a different site, so it reports those URLs as “not allowed.”
+
+**Fix (choose one):**
+
+1. **Use the non-www property (recommended if your site is non-www):**  
+   In GSC, add a **new property** with URL **`https://heritagehillaussies.com`** (no www). Verify it (same meta tag or file works if the site serves it for both). Submit `sitemap.xml` under this property. Remove or ignore the sitemap from the www property.
+
+2. **Use the www property:**  
+   If you want the property to be **www**: set `NEXT_PUBLIC_SITE_URL=https://www.heritagehillaussies.com` in production, redeploy, then submit the sitemap under the **www** property. The sitemap will then list www URLs and will match.
+
 ---
 
 ## 4. Bing Webmaster Tools

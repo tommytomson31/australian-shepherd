@@ -77,7 +77,7 @@ export const fallbackPuppies: FallbackPuppy[] = [
     gender: 'female',
     age: '9 weeks',
     price: 1000,
-    status: 'available',
+    status: 'reserved',
     mainImage: '/images/Kate Female 9 weeks 1000/IMG_20260207_232929_820.jpg',
     images: ['/images/Kate Female 9 weeks 1000/IMG_20260207_232929_820.jpg'],
   },
