@@ -11,7 +11,7 @@ import path from 'path';
 const IMAGE_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.gif', '.webp']);
 const SKIP_FOLDERS = new Set(['parents and past litters']);
 const PUPPY_STATUS_OVERRIDES: Record<string, 'available' | 'reserved' | 'sold'> = {
-  kate: 'reserved',
+  kate: 'available',
 };
 
 export interface PuppyFromFolder {
