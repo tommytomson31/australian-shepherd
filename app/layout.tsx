@@ -36,11 +36,11 @@ export const metadata: Metadata = {
     template: '%s | Heritage Hill Aussies',
   },
   description:
-    'Premier Australian Shepherd breeder. Family-raised, AKC-registered puppies with champion bloodlines, health guarantees & lifetime support. View available puppies.',
+    'Premier Australian Shepherd breeder. Family-raised puppies with champion bloodlines, health guarantees & lifetime support. View available puppies.',
   keywords: [
     'Australian Shepherd puppies',
     'Aussie breeder',
-    'AKC Australian Shepherd',
+    'Australian Shepherd breeder',
     'Heritage Hill Aussies',
   ],
   authors: [{ name: 'Heritage Hill Aussies', url: baseUrl }],
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     siteName: 'Heritage Hill Aussies',
     title: 'Australian Shepherd Puppies | Heritage Hill Aussies',
     description:
-      'Premier Australian Shepherd breeder. Family-raised, AKC-registered puppies with champion bloodlines, health guarantees & lifetime support.',
+      'Premier Australian Shepherd breeder. Family-raised puppies with champion bloodlines, health guarantees & lifetime support.',
     images: [
       {
         url: `${baseUrl}/images/Parents%20and%20past%20litters/Hero%20Image.jpg`,
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Australian Shepherd Puppies | Heritage Hill Aussies',
     description:
-      'Premier Australian Shepherd breeder. Family-raised, AKC-registered puppies with health guarantees & lifetime support.',
+      'Premier Australian Shepherd breeder. Family-raised puppies with health guarantees & lifetime support.',
   },
   robots: {
     index: true,

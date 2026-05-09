@@ -43,7 +43,6 @@ export default function Footer() {
             <ul className="footer__links">
               <li>Email: aussiepuppies06@gmail.com</li>
               <li>Phone: +1 (757) 964-5341</li>
-              <li>Location: United States</li>
             </ul>
           </div>
         </div>

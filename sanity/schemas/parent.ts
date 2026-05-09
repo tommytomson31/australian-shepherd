@@ -74,9 +74,9 @@ export default defineType({
     }),
     defineField({
       name: 'akc',
-      title: 'AKC Registration',
+      title: 'Registration',
       type: 'string',
-      description: 'AKC registration number or status',
+      description: 'Registration number or status',
     }),
   ],
   preview: {

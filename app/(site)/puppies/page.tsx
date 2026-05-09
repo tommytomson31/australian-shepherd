@@ -18,7 +18,7 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://heritagehillaussies
 export const metadata = {
   title: 'Available Puppies',
   description:
-    'Browse our available Australian Shepherd puppies. Each puppy comes with AKC registration, health guarantee, and lifetime support.',
+    'Browse our available Australian Shepherd puppies. Each puppy comes with a health guarantee and lifetime support.',
   alternates: { canonical: `${baseUrl}/puppies` },
 };
 
@@ -49,7 +49,7 @@ export default async function PuppiesPage() {
           </div>
           <div className="grid grid--4">
             {[
-              { icon: '✦', title: 'AKC Registration' },
+              { icon: '✦', title: 'Registered Pedigree' },
               { icon: '✓', title: 'Vet Health Check' },
               { icon: '💉', title: 'Current Vaccinations' },
               { icon: '📋', title: 'Medical Records' },

@@ -20,14 +20,9 @@ export function organizationSchema(sameAs?: string[]) {
     url: BASE_URL,
     logo: `${BASE_URL}/images/Parents and past litters/Hero Image.jpg`,
     description:
-      'Premier Australian Shepherd breeder. Family-raised, AKC-registered puppies with champion bloodlines, health guarantees, and lifetime support.',
+      'Premier Australian Shepherd breeder. Family-raised puppies with champion bloodlines, health guarantees, and lifetime support.',
     email: 'aussiepuppies06@gmail.com',
     telephone: '+17579645341',
-    address: {
-      '@type': 'PostalAddress',
-      addressCountry: 'US',
-      addressRegion: 'United States',
-    },
     ...(sameAs?.length ? { sameAs } : {}),
   };
 }
@@ -58,15 +53,10 @@ export function localBusinessSchema(sameAs?: string[]) {
     '@id': `${BASE_URL}/#localbusiness`,
     name: 'Heritage Hill Aussies',
     description:
-      'Family-owned Australian Shepherd breeder. AKC-registered puppies, health guarantees, champion bloodlines, lifetime support.',
+      'Family-owned Australian Shepherd breeder. Health guarantees, champion bloodlines, lifetime support.',
     url: BASE_URL,
     telephone: '+17579645341',
     email: 'aussiepuppies06@gmail.com',
-    address: {
-      '@type': 'PostalAddress',
-      addressCountry: 'US',
-    },
-    areaServed: 'US',
     openingHoursSpecification: {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],

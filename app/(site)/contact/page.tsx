@@ -18,7 +18,7 @@ const CONTACT_FAQS = [
   },
   {
     q: 'What is included with each puppy?',
-    a: 'Every puppy comes with AKC registration, current vaccinations, vet health check, medical records, health guarantee, and lifetime breeder support.',
+    a: 'Every puppy comes with current vaccinations, vet health check, medical records, health guarantee, and lifetime breeder support.',
   },
   {
     q: 'How do I reserve a puppy?',
@@ -93,8 +93,8 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                     <a href="tel:+17579645341">+1 (757) 964-5341</a>
                   </li>
                   <li className="contact-card__item">
-                    <span className="contact-card__label">Location</span>
-                    United States
+                    <span className="contact-card__label">Hours</span>
+                    Monday - Saturday: 9am - 6pm
                   </li>
                 </ul>
               </div>

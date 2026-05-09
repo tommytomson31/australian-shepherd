@@ -45,7 +45,7 @@ export default async function HomePage() {
   const homePageSchema = webPageSchema({
     name: 'Australian Shepherd Puppies | Heritage Hill Aussies',
     description:
-      'Premier Australian Shepherd breeder. Family-raised, AKC-registered puppies with champion bloodlines, health guarantees and lifetime support.',
+      'Premier Australian Shepherd breeder. Family-raised puppies with champion bloodlines, health guarantees and lifetime support.',
     path: '/',
     breadcrumbs: [{ name: 'Home', path: '/' }],
   });
@@ -62,15 +62,15 @@ export default async function HomePage() {
         <div className="hero__overlay"></div>
         <div className="hero__content">
           <span className="hero__accent fade-in">
-            Family-Raised &bull; AKC Registered &bull; Health Guaranteed
+            Family-Raised &bull; Health Guaranteed &bull; Lifetime Support
           </span>
           <h1 className="fade-in">
             Exceptional Australian Shepherds, Raised with Heart
           </h1>
           <p className="hero__subtitle fade-in">
             Our puppies are born and raised in our family home, socialized with
-            children and pets, potty trained, and come with complete AKC
-            registration and veterinary records.
+            children and pets, potty trained, and come with complete
+            veterinary records and health documentation.
           </p>
           <div className="hero__actions fade-in">
             <Link href="/puppies" className="btn btn--primary btn--lg">
@@ -89,7 +89,7 @@ export default async function HomePage() {
           <div className="trust-bar__grid">
             <div className="trust-bar__item">
               <span className="trust-bar__icon">✦</span>
-              <span className="trust-bar__text">AKC Registered</span>
+              <span className="trust-bar__text">Registered Pedigree</span>
             </div>
             <div className="trust-bar__item">
               <span className="trust-bar__icon">✓</span>
@@ -155,11 +155,11 @@ export default async function HomePage() {
           <div className="features__grid">
             {[
               { icon: '♥', title: 'Home Raised with Love', desc: 'Every puppy is raised in our family home and socialized from day one with children and other pets, ensuring a well-adjusted temperament.' },
-              { icon: '✓', title: 'Health Guaranteed', desc: 'Full vaccination records, comprehensive vet checks, complete medical history, and AKC registration included with every puppy.' },
+              { icon: '✓', title: 'Health Guaranteed', desc: 'Full vaccination records, comprehensive vet checks, and complete medical history included with every puppy.' },
               { icon: '✦', title: 'Potty Trained & Ready', desc: 'Basic house training and thorough socialization are started before your puppy goes home, giving you a head start on a smooth transition.' },
               { icon: '★', title: 'Lifetime Breeder Support', desc: "Our relationship with you doesn't end at pickup. We provide guidance and support for the entire life of your puppy, whenever you need it." },
               { icon: '✦', title: 'Champion Bloodlines', desc: 'Carefully selected genetics from champion lines ensure your puppy has the best foundation for health, temperament, and conformation.' },
-              { icon: '✓', title: 'Complete Documentation', desc: 'Vaccination papers, medical records, AKC registration, and a written health guarantee are provided with every Heritage Hill puppy.' },
+              { icon: '✓', title: 'Complete Documentation', desc: 'Vaccination papers, medical records, and a written health guarantee are provided with every Heritage Hill puppy.' },
             ].map((feature, i) => (
               <div key={i} className="features__card fade-in">
                 <span className="features__icon">{feature.icon}</span>

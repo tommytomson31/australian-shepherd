@@ -79,7 +79,7 @@ Manage your puppy listings with:
 Add information about your breeding dogs:
 - Name, gender, color
 - Health tests completed
-- AKC registration info
+- Registration info
 - Multiple images
 
 #### Photo Galleries
